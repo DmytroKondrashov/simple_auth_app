@@ -1,0 +1,61 @@
+# SERVER
+
+# compiled output
+server/dist
+server/node_modules
+server/build
+
+# Logs
+server/logs
+*.log
+server/npm-debug.log*
+server/pnpm-debug.log*
+server/yarn-debug.log*
+server/yarn-error.log*
+server/lerna-debug.log*
+
+# OS
+server/.DS_Store
+
+# Tests
+server/coverage
+server/.nyc_output
+
+# dotenv environment variable files
+server/.env
+server/.env.development.local
+server/.env.test.local
+server/.env.production.local
+.env.local
+
+# temp directory
+server/.temp
+server/.tmp
+
+# Runtime data
+server/pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+server/report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+
+# OS
+server/.DS_Store
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

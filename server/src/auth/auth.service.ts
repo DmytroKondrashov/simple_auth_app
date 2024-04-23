@@ -11,12 +11,14 @@ export class AuthService {
   ) {}
 
   async validateUser(details: UserDetails) {
-    console.log('=========================');
-    console.log(details);
-    console.log('=========================');
     const user = await this.userRepository.findOneBy({ email: details.email });
     if (user) return user;
     const newUser = this.userRepository.create(details);
     return this.userRepository.save(newUser);
+  }
+
+  async findUser(id: number) {
+    const user = await this.userRepository.findOneBy({ id });
+    return user;
   }
 }

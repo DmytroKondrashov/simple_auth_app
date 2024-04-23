@@ -1,9 +1,10 @@
 /* eslint-disable @typescript-eslint/ban-types */
-import { Inject } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { PassportSerializer } from '@nestjs/passport';
 import { AuthService } from '../auth.service';
 import { User } from 'src/typeorm/entities/user';
 
+@Injectable()
 export class SessionSerializer extends PassportSerializer {
   constructor(
     @Inject('AUTH_SERVICE') private readonly authService: AuthService,

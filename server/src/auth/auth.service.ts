@@ -10,9 +10,11 @@ export class AuthService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-  validateUser(details: UserDetails) {
+  async validateUser(details: UserDetails) {
     console.log('=========================');
     console.log(details);
     console.log('=========================');
+    const user = await this.userRepository.findOneBy({ email: details.email });
+    if (user) return user;
   }
 }

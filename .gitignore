@@ -59,3 +59,6 @@ server/.DS_Store
 !.vscode/tasks.json
 !.vscode/launch.json
 !.vscode/extensions.json
+
+# .env files
+server/.env

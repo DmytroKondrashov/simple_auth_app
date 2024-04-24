@@ -8,7 +8,7 @@ async function bootstrap() {
   app.setGlobalPrefix('api');
   app.use(
     session({
-      secret: 'longStrngThatShouldBeStoredIn.envFile',
+      secret: process.env.SESSION_SECRET,
       saveUninitialized: false,
       resave: false,
       cookie: {

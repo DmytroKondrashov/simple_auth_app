@@ -23,4 +23,12 @@ export class AuthController {
       return { msg: 'Not Authenticated' };
     }
   }
+
+  // @Post('logout')
+  // logout(@Req request: Request) {
+  //   request.logout(function(err) {
+  //     if (err) { return next(err); }
+  //     res.redirect('/');
+  //   });
+  // }
 }

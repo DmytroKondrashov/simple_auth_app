@@ -29,11 +29,15 @@ export class AuthController {
   }
 
   @Get('logout')
-  async logout(@Req() request) {
-    if (request?.user) {
-      const { accessToken, email } = request.user;
-      request.logout();
-      await this.authService.updateUser(email, { accessToken: undefined });
+  async logout(@Req() req) {
+    if (req?.user) {
+      const { accessToken, email } = req.user;
+      req.logout((err) => {
+        if (err) {
+          console.error('Error during logout:', err);
+        }
+      });
+      await this.authService.updateUser(email, { accessToken: null });
       await axios.post(
         `https://oauth2.googleapis.com/revoke?token=${accessToken}`,
       );

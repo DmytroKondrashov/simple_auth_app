@@ -11,6 +11,6 @@ export class User {
   @Column()
   displayName: string;
 
-  @Column()
-  accessToken: string;
+  @Column({ nullable: true })
+  accessToken: string | null;
 }

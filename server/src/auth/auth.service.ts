@@ -12,6 +12,11 @@ export class AuthService {
 
   async validateUser(details: UserDetails) {
     const user = await this.userRepository.findOneBy({ email: details.email });
+    if (user.accessToken == null) {
+      await this.updateUser(details.email, {
+        accessToken: details.accessToken,
+      });
+    }
     if (user) return user;
     const newUser = this.userRepository.create(details);
     return this.userRepository.save(newUser);

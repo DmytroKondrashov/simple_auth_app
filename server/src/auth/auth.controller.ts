@@ -1,5 +1,6 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { GoogleAuthGuard } from './utils/guards';
+import axios from 'axios';
 
 @Controller('auth')
 export class AuthController {
@@ -25,9 +26,12 @@ export class AuthController {
   }
 
   @Get('logout')
-  logout(@Req() request) {
+  async logout(@Req() request) {
     if (request?.user?.accessToken) {
       console.log(request.user.accessToken);
+      await axios.post(
+        `https://oauth2.googleapis.com/revoke?token=${request.user.accessToken}`,
+      );
       return { msg: 'Logged out!' };
     } else {
       return { msg: 'You must first be logged in!' };

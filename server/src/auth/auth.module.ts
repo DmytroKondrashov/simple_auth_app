@@ -11,6 +11,7 @@ import { ConfigModule } from '@nestjs/config';
   imports: [TypeOrmModule.forFeature([User]), ConfigModule.forRoot()],
   controllers: [AuthController],
   providers: [
+    AuthService,
     SessionSerializer,
     GoogleStrategy,
     {

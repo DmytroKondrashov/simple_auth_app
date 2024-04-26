@@ -21,4 +21,8 @@ export class AuthService {
     const user = await this.userRepository.findOneBy({ id });
     return user;
   }
+
+  async updateUser(email: string, data: Record<string, any>) {
+    return this.userRepository.update({ email }, data);
+  }
 }

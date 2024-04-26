@@ -24,11 +24,13 @@ export class AuthController {
     }
   }
 
-  // @Post('logout')
-  // logout(@Req request: Request) {
-  //   request.logout(function(err) {
-  //     if (err) { return next(err); }
-  //     res.redirect('/');
-  //   });
-  // }
+  @Get('logout')
+  logout(@Req() request) {
+    if (request?.user?.accessToken) {
+      console.log(request.user.accessToken);
+      return { msg: 'Logged out!' };
+    } else {
+      return { msg: 'You must first be logged in!' };
+    }
+  }
 }

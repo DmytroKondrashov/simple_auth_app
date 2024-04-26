@@ -8,6 +8,6 @@ export class AccountsController {
 
   @Post()
   async createAccount(@Req() request: AccountDetails) {
-    await this.accountService.createAccount(request);
+    return this.accountService.createAccount(request);
   }
 }

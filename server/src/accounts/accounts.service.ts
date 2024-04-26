@@ -12,6 +12,7 @@ export class AccountsService {
   ) {}
 
   async createAccount(data: AccountDetails) {
-    return this.accountRepository.create(data);
+    const fullData = { ...data, createdAt: Date.now() };
+    return this.accountRepository.create(fullData);
   }
 }

@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from './typeorm/entities/user';
 import { PassportModule } from '@nestjs/passport';
 import { AccountsModule } from './accounts/accounts.module';
+import { Account } from './typeorm/entities/account';
 
 @Module({
   imports: [
@@ -17,7 +18,7 @@ import { AccountsModule } from './accounts/accounts.module';
       username: process.env.DB_USERNAME,
       password: process.env.DB_PASSWORD,
       database: process.env.DB_DATABASE,
-      entities: [User],
+      entities: [User, Account],
       synchronize: true,
     }),
     PassportModule.register({ session: true }),

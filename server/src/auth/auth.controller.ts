@@ -1,9 +1,12 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
 import { GoogleAuthGuard } from './utils/guards';
+import { AuthService } from './auth.service';
 import axios from 'axios';
 
 @Controller('auth')
 export class AuthController {
+  constructor(private readonly authService: AuthService) {}
+
   @Get('google/login')
   @UseGuards(GoogleAuthGuard)
   handleLogin() {
@@ -27,10 +30,12 @@ export class AuthController {
 
   @Get('logout')
   async logout(@Req() request) {
-    if (request?.user?.accessToken) {
-      console.log(request.user.accessToken);
+    if (request?.user) {
+      const { accessToken, email } = request.user;
+      request.logout();
+      await this.authService.updateUser(email, { accessToken: undefined });
       await axios.post(
-        `https://oauth2.googleapis.com/revoke?token=${request.user.accessToken}`,
+        `https://oauth2.googleapis.com/revoke?token=${accessToken}`,
       );
       return { msg: 'Logged out!' };
     } else {

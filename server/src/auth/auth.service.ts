@@ -12,7 +12,7 @@ export class AuthService {
 
   async validateUser(details: UserDetails) {
     const user = await this.userRepository.findOneBy({ email: details.email });
-    if (!user?.accessToken ?? user.accessToken == null) {
+    if (!user?.accessToken) {
       await this.updateUser(details.email, {
         accessToken: details.accessToken,
       });

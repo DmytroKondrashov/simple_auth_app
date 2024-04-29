@@ -30,20 +30,19 @@ export class AuthController {
 
   @Get('logout')
   async logout(@Req() req) {
-    if (req?.user) {
-      const { accessToken, email } = req.user;
-      req.logout((err) => {
-        if (err) {
-          console.error('Error during logout:', err);
-        }
-      });
-      await this.authService.updateUser(email, { accessToken: null });
-      await axios.post(
-        `https://oauth2.googleapis.com/revoke?token=${accessToken}`,
-      );
-      return { msg: 'Logged out!' };
-    } else {
+    if (!req?.user) {
       return { msg: 'You must first be logged in!' };
     }
+    const { accessToken, email } = req.user;
+    await axios.post(
+      `https://oauth2.googleapis.com/revoke?token=${accessToken}`,
+    );
+    await this.authService.updateUser(email, { accessToken: null });
+    req.logout((err) => {
+      if (err) {
+        console.error('Error during logout:', err);
+      }
+    });
+    return { msg: 'Logged out!' };
   }
 }

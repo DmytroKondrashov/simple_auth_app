@@ -10,3 +10,7 @@ export type AccountDetails = {
   ownerAddress: string;
   paid: boolean;
 };
+
+export type UpdateAccount = {
+  ownerAddress: string;
+};

@@ -1,6 +1,6 @@
 import { Controller, Post, Req } from '@nestjs/common';
 import { AccountsService } from './accounts.service';
-import { AccountDetails } from 'src/utils/types';
+import { AccountDetails, UpdateAccount } from 'src/utils/types';
 
 @Controller('accounts')
 export class AccountsController {
@@ -9,5 +9,10 @@ export class AccountsController {
   @Post()
   async createAccount(@Req() request: AccountDetails) {
     return this.accountService.createAccount(request);
+  }
+
+  @Post()
+  async editAccount(@Req() request: UpdateAccount) {
+    return this.accountService.updateAccount(request);
   }
 }

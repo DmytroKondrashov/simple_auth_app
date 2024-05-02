@@ -12,5 +12,6 @@ export type AccountDetails = {
 };
 
 export type UpdateAccount = {
+  id: string;
   ownerAddress: string;
 };

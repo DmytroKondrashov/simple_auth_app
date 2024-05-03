@@ -18,6 +18,6 @@ export class AccountsService {
 
   async updateAccount(request: UpdateAccount) {
     const { id, ownerAddress } = request;
-    return this.accountRepository.update({ id }, { ownerAddress });
+    return this.accountRepository.update(id, { ownerAddress });
   }
 }

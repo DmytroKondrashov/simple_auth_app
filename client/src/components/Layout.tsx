@@ -1,5 +1,11 @@
+import { useAuth } from "../hooks/AuthProvider";
+
 function Layout() {
-  return 'This is layout!'
+  const auth = useAuth();
+
+  return (
+    'This is layout!'
+  )
 }
 
 export default Layout;

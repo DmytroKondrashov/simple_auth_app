@@ -19,7 +19,7 @@ export default function Landing() {
         <input type="checkbox" className="form-check-input" id="exampleCheck1" />
         <label className="form-check-label" htmlFor="exampleCheck1">Check me out</label>
       </div>
-      <button type="submit" className="btn btn-primary" onClick={async () => await auth.loginAction()}>Submit</button>
+      <button type="button" className="btn btn-primary" onClick={async () => await auth.loginAction()}>Submit</button>
     </form>
   </>
   )

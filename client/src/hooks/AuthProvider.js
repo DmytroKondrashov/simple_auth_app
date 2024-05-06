@@ -9,7 +9,7 @@ const AuthProvider = ({children}) => {
 
   const loginAction = async () => {
     try {
-      const response = await fetch('http://localhost:3001/auth/google/login', {
+      const response = await fetch('http://localhost:3001/api/auth/google/login', {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

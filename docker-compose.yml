@@ -5,6 +5,7 @@ services:
     build:
       context: ./server
       dockerfile: Dockerfile
+    platform: linux/amd64 
     ports:
       - "3001:3001"
     depends_on:
@@ -20,6 +21,7 @@ services:
     build:
       context: ./client
       dockerfile: Dockerfile
+    platform: linux/amd64 
     ports:
       - "3000:3000"
     depends_on:
@@ -27,6 +29,7 @@ services:
 
   db:
     image: mysql:5.7
+    platform: linux/amd64 
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: example

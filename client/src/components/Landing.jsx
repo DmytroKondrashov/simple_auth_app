@@ -4,6 +4,13 @@ import GoogleLoginButton from '../components/GoogleLoginButton'
 // import { GoogleLogin } from 'react-google-login';
 
 export default function Landing() {
+  const clientId = process.env.REACT_APP_GOOGLE_CLIENT_ID;
+  
+  if (!clientId) {
+    console.error('REACT_APP_GOOGLE_CLIENT_ID is not set in the .env file');
+    return null;
+  }
+
   // const auth = useAuth();
 
   // const responseGoogle = (response) => {

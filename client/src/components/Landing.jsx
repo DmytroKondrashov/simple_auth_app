@@ -1,22 +1,29 @@
-import { useAuth } from "../hooks/AuthProvider";
-import { GoogleLogin } from 'react-google-login';
+import { GoogleOAuthProvider } from "@react-oauth/google";
+import GoogleLoginButton from '../components/GoogleLoginButton'
+// import { useAuth } from "../hooks/AuthProvider";
+// import { GoogleLogin } from 'react-google-login';
 
 export default function Landing() {
-  const auth = useAuth();
+  // const auth = useAuth();
 
-  const responseGoogle = (response) => {
-    console.log(response);
-  }
+  // const responseGoogle = (response) => {
+  //   console.log(response);
+  // }
 
   return(
-      <GoogleLogin
-        clientId="851019047002-kjeum6otrjgmumomvb2nhk474o04qmk1.apps.googleusercontent.com"
-        buttonText="Login"
-        onSuccess={responseGoogle}
-        onFailure={responseGoogle}
-        cookiePolicy={'single_host_origin'}
-        redirectUri="http://localhost:3000/api/auth/google/redirect"
-      />
+      // <GoogleLogin
+      //   clientId="851019047002-kjeum6otrjgmumomvb2nhk474o04qmk1.apps.googleusercontent.com"
+      //   buttonText="Login"
+      //   onSuccess={responseGoogle}
+      //   onFailure={responseGoogle}
+      //   cookiePolicy={'single_host_origin'}
+      //   redirectUri="http://localhost:3000/api/auth/google/redirect"
+      // />
+
+    <GoogleOAuthProvider clientId="">
+      <GoogleLoginButton />
+    </GoogleOAuthProvider>
+
   //   <>
   //   <form>
   //     <div className="mb-3">

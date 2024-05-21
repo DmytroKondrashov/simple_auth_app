@@ -20,7 +20,7 @@ export default function Landing() {
       //   redirectUri="http://localhost:3000/api/auth/google/redirect"
       // />
 
-    <GoogleOAuthProvider clientId={process.env.CLIENT_ID}>
+    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
       <GoogleLoginButton />
     </GoogleOAuthProvider>
 

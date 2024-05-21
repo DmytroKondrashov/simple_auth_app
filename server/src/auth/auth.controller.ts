@@ -1,22 +1,34 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common';
-import { GoogleAuthGuard } from './utils/guards';
+// import { GoogleAuthGuard } from './utils/guards';
 import { AuthService } from './auth.service';
 import axios from 'axios';
+import { AuthGuard } from '@nestjs/passport';
 
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Get('google/login')
-  @UseGuards(GoogleAuthGuard)
-  handleLogin() {
-    return { msg: 'Google Authentication!' };
-  }
+  // @Get('google/login')
+  // @UseGuards(GoogleAuthGuard)
+  // handleLogin() {
+  //   return { msg: 'Google Authentication!' };
+  // }
 
-  @Get('/google/redirect')
-  @UseGuards(GoogleAuthGuard)
-  handleRedirect() {
-    return { msg: 'OK!' };
+  // @Get('/google/redirect')
+  // @UseGuards(GoogleAuthGuard)
+  // handleRedirect() {
+  //   return { msg: 'OK!' };
+  // }
+
+  @Get('google')
+  @UseGuards(AuthGuard('google'))
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async googleAuth(@Req() req) {}
+
+  @Get('google/callback')
+  @UseGuards(AuthGuard('google'))
+  googleAuthRedirect(@Req() req) {
+    return req.user;
   }
 
   @Get('status')

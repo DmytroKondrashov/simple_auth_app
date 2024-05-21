@@ -6,9 +6,14 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { User } from 'src/typeorm/entities/user';
 import { SessionSerializer } from './utils/serialize';
 import { ConfigModule } from '@nestjs/config';
+import { PassportModule } from '@nestjs/passport';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([User]), ConfigModule.forRoot()],
+  imports: [
+    TypeOrmModule.forFeature([User]),
+    ConfigModule.forRoot(),
+    PassportModule,
+  ],
   controllers: [AuthController],
   providers: [
     AuthService,
